@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 
 dotenv.config();
 
-const MONGODB_URI = 'mongodb://localhost/ej2-jog-manager';
+const MONGODB_URI = 'mongodb://localhost/ej2-job-manager';
 
 mongoose.connect(MONGODB_URI);
 
@@ -15,6 +15,11 @@ const port = process.env.PORT || 3045;
 app.get('/', (req, res) => {
 	res.send('<h1>EJ2 Job Manager API</h1>')
 });
+
+app.get('/job-sources', async (req, res) => {
+	const jobSources = await JobSource.find();
+	res.status(200).json(jobSources);
+})
 
 app.listen(port, () => {
 	console.log(`Listening on http://localhost:${port}`);
