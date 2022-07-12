@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 
 dotenv.config();
 
-const MONGODB_URI = 'mongodb://localhost/ej2-job-manager';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/ej2-job-manager';
 
 mongoose.connect(MONGODB_URI, (err) => {
 	if(err) console.log(err);
