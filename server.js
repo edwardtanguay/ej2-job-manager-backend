@@ -7,7 +7,9 @@ dotenv.config();
 
 const MONGODB_URI = 'mongodb://localhost/ej2-job-manager';
 
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, (err) => {
+	if(err) console.log(err);
+});
 
 const app = express();
 const port = process.env.PORT || 3045;
